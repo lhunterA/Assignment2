@@ -1,0 +1,9 @@
+C:\Users\Linds\source\repos\200425671A2\200425671A2\bin\Release\200425671A2.exe.config
+C:\Users\Linds\source\repos\200425671A2\200425671A2\bin\Release\200425671A2.exe
+C:\Users\Linds\source\repos\200425671A2\200425671A2\bin\Release\200425671A2.pdb
+C:\Users\Linds\source\repos\200425671A2\200425671A2\obj\Release\_200425671A2.frmCalculator.resources
+C:\Users\Linds\source\repos\200425671A2\200425671A2\obj\Release\_200425671A2.Properties.Resources.resources
+C:\Users\Linds\source\repos\200425671A2\200425671A2\obj\Release\200425671A2.csproj.GenerateResource.cache
+C:\Users\Linds\source\repos\200425671A2\200425671A2\obj\Release\200425671A2.exe
+C:\Users\Linds\source\repos\200425671A2\200425671A2\obj\Release\200425671A2.pdb
+C:\Users\Linds\source\repos\200425671A2\200425671A2\obj\Release\200425671A2.csprojAssemblyReference.cache
