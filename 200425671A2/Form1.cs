@@ -41,12 +41,21 @@ namespace _200425671A2
         /// <param name="e"></param>
         private void btnBack_Click(object sender, EventArgs e)
         {
-            currentInput = currentInput.Remove(currentInput.Length-1, 1); 
+            currentInput = currentInput.Remove(currentInput.Length-1);
+            txtInputField.Text = currentInput;
+
         }
 
+        private void btnBack_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Back)
+            {
+                currentInput = currentInput.Remove(currentInput.Length - 1);
+                txtInputField.Text = currentInput;
+            }
+        }
 
-
-#region NumberButtons
+        #region NumberButtons
 
         private void btn0_Click(object sender, EventArgs e)
         {
@@ -134,12 +143,14 @@ namespace _200425671A2
         {
             if (currentInput.IndexOf("-") == -1)
             {
-                currentInput += currentInput.Insert(0, "-");
+                currentInput = currentInput.Insert(0, "-");
                 txtInputField.Text = currentInput;
             }
             else
-                currentInput += currentInput.Remove(0, 1);
+                currentInput = currentInput.Remove(0, 1);
                 txtInputField.Text = currentInput;
         }
+
+        
     }
 }

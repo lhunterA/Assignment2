@@ -61,9 +61,10 @@
             // 
             this.txtInputField.Location = new System.Drawing.Point(13, 17);
             this.txtInputField.Name = "txtInputField";
-            this.txtInputField.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtInputField.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtInputField.Size = new System.Drawing.Size(335, 22);
             this.txtInputField.TabIndex = 0;
+            this.txtInputField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtMemoryBox
             // 
@@ -84,6 +85,7 @@
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBack_KeyDown);
             // 
             // btnClear
             // 
