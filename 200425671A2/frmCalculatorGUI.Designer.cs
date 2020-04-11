@@ -387,6 +387,7 @@
             this.Controls.Add(this.txtInputField);
             this.Name = "frmCalculator";
             this.Text = "Calculator";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmCalculator_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

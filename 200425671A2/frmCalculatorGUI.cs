@@ -37,52 +37,52 @@ namespace _200425671A2
         /// <param name="e"></param>
         private void btn0_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("0");
+            AddCurrentInput('0');
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("1");
+            AddCurrentInput('1');
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("2");
+            AddCurrentInput('2');
         }
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("3");
+            AddCurrentInput('3');
         }
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("4");
+            AddCurrentInput('4');
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("5");
+            AddCurrentInput('5');
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("6");
+            AddCurrentInput('6');
         }
 
         private void btn7_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("7");
+            AddCurrentInput('7');
         }
 
         private void btn8_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("8");
+            AddCurrentInput('8');
         }
 
         private void btn9_Click(object sender, EventArgs e)
         {
-            AddCurrentInput("9");
+            AddCurrentInput('9');
         }
         #endregion
 
@@ -97,7 +97,7 @@ namespace _200425671A2
         {
             if (currentInput.IndexOf(".") == -1) //if there is not already a decimal in the number
             {
-                AddCurrentInput("."); 
+                AddCurrentInput('.'); 
             }
             else
             {
@@ -278,7 +278,7 @@ namespace _200425671A2
         /// Method to add the argument to the end of the input box of the calculator
         /// </summary>
         /// <param name="s"></param>
-        public void AddCurrentInput(String s)
+        public void AddCurrentInput(Char s)
         {
             currentInput += s; //add string parameter to the String varaible currentInput
             txtInputField.Text = currentInput; //set the text box equal to the String varaible
@@ -366,7 +366,53 @@ namespace _200425671A2
             Decimal.TryParse(mc.MemInput, out num2);
             mc.MemInput = mc.Add(num1, num2); //inheritinng the Add function from Calculator and implementing it here.      
         }
+
         #endregion
+
+        /// <summary>
+        /// When the specific key is pressed we will do the same functionality as if the correlating
+        /// buttin was pressed by executing the AddCurrentInput() method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmCalculator_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar.ToString())
+            {
+                case "0":
+                    btn0.PerformClick();
+                    break;
+                case "1":
+                    AddCurrentInput('1');
+                    break;
+                case "2":
+                    AddCurrentInput('2');
+                    break;
+                case "3":
+                    AddCurrentInput('3');
+                    break;
+                case "4":
+                    AddCurrentInput('4');
+                    break;
+                case "5":
+                    AddCurrentInput('5');
+                    break;
+                case "6":
+                    AddCurrentInput('6');
+                    break;
+                case "7":
+                    AddCurrentInput('7');
+                    break;
+                case "8":
+                    AddCurrentInput('8');
+                    break;
+                case "9":
+                    AddCurrentInput('9');
+                    break;
+                
+            }
+        }
+
     }  
 }
 
