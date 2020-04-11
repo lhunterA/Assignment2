@@ -16,9 +16,9 @@ namespace _200425671A2
         /// </summary>
         private String currentInput = "";
         private String operation = "";
-
         private decimal num1 = 0;
         private decimal num2 = 0;
+
 
         Calculator Calc = new Calculator(); //creating an instance of the Calculator class
         MemoryCalculator mc = new MemoryCalculator(); //creating an instance of the MemoryCalculator class
@@ -28,96 +28,80 @@ namespace _200425671A2
             InitializeComponent();
         }
 
+             #region NumberButtonsClick
 
-         #region NumberButtonsClick
+        /// <summary>
+        /// Using the AddCurrentInput method for all numeric valued buttons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn0_Click(object sender, EventArgs e)
         {
-            currentInput += "0";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("0");
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            currentInput += "1";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("1");
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            currentInput += "2";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("2");
         }
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            currentInput += "3";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("3");
         }
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            currentInput += "4";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("4");
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
-            currentInput += "5";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("5");
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            currentInput += "6";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("6");
         }
 
         private void btn7_Click(object sender, EventArgs e)
         {
-            currentInput += "7";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("7");
         }
 
         private void btn8_Click(object sender, EventArgs e)
         {
-            currentInput += "8";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("8");
         }
 
         private void btn9_Click(object sender, EventArgs e)
         {
-            currentInput += "9";
-            txtInputField.Text = currentInput;
+            AddCurrentInput("9");
         }
         #endregion
 
-        #region OtherButtonsClick
+             #region OtherButtonsClick
         /// <summary>
         /// Adding a decimal to a number with some error handling: 
-        /// if there is already a decimal in the number don't add another one, 
-        /// and
-        /// If it is the first input add a zero before the decimal.
+        /// if there is already a decimal in the number don't add another one.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnDecimal_Click(object sender, EventArgs e)
         {
-            if (currentInput.IndexOf(".") == -1)
+            if (currentInput.IndexOf(".") == -1) //if there is not already a decimal in the number
             {
-                if (currentInput.IndexOf(".") == 1)
-                {
-                    currentInput += "0.";
-                    txtInputField.Text = currentInput;
-                }
-                else
-                {
-                    currentInput += ".";
-                    txtInputField.Text = currentInput;
-                }
+                AddCurrentInput("."); 
             }
             else
             {
-                txtInputField.Text = currentInput;
+                txtInputField.Text = currentInput; //if there is already a decimal, do nothing
             }
         }
 
@@ -129,21 +113,21 @@ namespace _200425671A2
         /// <param name="e"></param>
         private void btnPosNeg_Click(object sender, EventArgs e)
         {
-            if (currentInput != "0")
+            if (currentInput != "0") //if the number isn't a zero
             {
 
-                if (currentInput.IndexOf("-") == -1)
+                if (currentInput.IndexOf("-") == -1) //if there is not a negative sign currently present
                 {
-                    currentInput = currentInput.Insert(0, "-");
-                    txtInputField.Text = currentInput;
+                    currentInput = currentInput.Insert(0, "-"); //add one
+                    txtInputField.Text = currentInput; //display it on the text box
                 }
                 else
-                    currentInput = currentInput.Remove(0, 1);
-                txtInputField.Text = currentInput;
+                    currentInput = currentInput.Remove(0, 1); //if there is negative sign currently, remove it
+                txtInputField.Text = currentInput; //display it on the textbox
             }
             else
             {
-                txtInputField.Text = currentInput;
+                txtInputField.Text = currentInput; //do nothing if number is zero
             }
         }
 
@@ -160,16 +144,14 @@ namespace _200425671A2
         }
 
         /// <summary>
-        /// When the button is pressed the entire calculator clears, excluding the memory stored. 
+        /// When the button is pressed the entire calculator clears, excluding the memory stored
+        /// By using the Clear() method. 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
-            currentInput = "";
-            txtInputField.Text = currentInput;
-            num1 = 0;
-            num2 = 0;
+            Clear("");
         }
 
 
@@ -180,19 +162,92 @@ namespace _200425671A2
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
+        #endregion
+
+             #region operationButtonsClick
+
+        /// <summary>
+        /// Using the SetOperation() method and passing it the parameter Divide
+        /// </summary>
+        private void btnDivide_Click(object sender, EventArgs e)
+        {
+            SetOperation("Divide");
+
+        }
+
+        /// <summary>
+        /// Using the SetOperation() method and passing it the parameter Multiply
+        /// </summary>
+        private void btnMultiply_Click(object sender, EventArgs e)
+        {
+            SetOperation("Multiply");
+        }
+
+        /// <summary>
+        /// Using the SetOperation() method and passing it the parameter Subtract
+        /// </summary>
+        private void btnMinus_Click(object sender, EventArgs e)
+        {
+            SetOperation("Subtract");
+        }
+
+        /// <summary>
+        /// Using the SetOperation() method and passing it the parameter Add
+        /// </summary>
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            SetOperation("Add");
+        }
+
+        /// <summary>
+        /// Calculating and displaying the number after passing through the calculator class's
+        /// SquareRoot() method. 
+        /// Setting the displayed calculated number to the currentInput for potential futher calculations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSQRT_Click(object sender, EventArgs e)
+        {
+            Decimal.TryParse(currentInput, out num1);
+            currentInput = "";
+            txtInputField.Text = Calc.SquareRoot(num1);
+            currentInput = txtInputField.Text;
+        }
+
+        /// <summary>
+        /// Calculating and displaying the number after passing through the calculator class's
+        /// Factor() method. 
+        /// Setting the displayed calculated number to the currentInput for potential futher calculations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReciprocal_Click(object sender, EventArgs e)
+        {
+            Decimal.TryParse(currentInput, out num1);
+            currentInput = "";
+            txtInputField.Text = Calc.Factor(num1);
+            currentInput = txtInputField.Text;
+        }
+
+
+        /// <summary>
+        /// When the equal button in clicked parse the currentInput as a Deciaml to the num2 variable.
+        /// Then check to make sure we won't get a divide by zero error
+        /// If not then perform the proper calculatiosn.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            Decimal.TryParse(currentInput, out num2);
-            currentInput = "";
+            Decimal.TryParse(currentInput, out num2); //assign the currently displayed text to num2
+            currentInput = ""; //set currentInput String to null
 
-            if (num2 == 0 && operation == "Divide")
+            if (num2 == 0 && operation == "Divide") //if num2 is zero and divide is the operation chosen
             {
-                txtInputField.Text = "ERROR: CANNOT DIVIDE BY ZERO";
-                num1 = 0;
-                num2 = 0;
-                operation = "";
+                Clear("ERROR: CANNOT DIVIDE BY ZERO"); //throw an error message to the user, and reset all varaibles using the Clear() method.
             }
-            else
+            else //if not call the calculator class and use the method corresponding to the operation chosen. 
             {
                 switch (operation)
                 {
@@ -200,7 +255,7 @@ namespace _200425671A2
                         txtInputField.Text = Calc.Add(num1, num2);
                         currentInput = txtInputField.Text;
                         break;
-                    case "Minus":
+                    case "Subtract":
                         txtInputField.Text = Calc.Subtract(num1, num2);
                         currentInput = txtInputField.Text;
                         break;
@@ -215,71 +270,78 @@ namespace _200425671A2
                 }
             }
         }
-        #endregion
-
-        #region operationButtonsClick
-        private void btnDivide_Click(object sender, EventArgs e)
-        {
-            operation = "Divide";
-            Decimal.TryParse(currentInput, out num1);
-            currentInput = "";
-
-        }
-
-        private void btnMultiply_Click(object sender, EventArgs e)
-        {
-            operation = "Multiply";
-            Decimal.TryParse(currentInput, out num1);
-            currentInput = "";
-        }
-
-        private void btnMinus_Click(object sender, EventArgs e)
-        {
-            operation = "Minus";
-            Decimal.TryParse(currentInput, out num1);
-            currentInput = "";
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            operation = "Add";
-            Decimal.TryParse(currentInput, out num1);
-            currentInput = "";
-        }
-
-        private void btnSQRT_Click(object sender, EventArgs e)
-        {
-            Decimal.TryParse(currentInput, out num1);
-            currentInput = "";
-            txtInputField.Text = Calc.SquareRoot(num1);
-            currentInput = txtInputField.Text;
-        }
-
-        private void btnReciprocal_Click(object sender, EventArgs e)
-        {
-            Decimal.TryParse(currentInput, out num1);
-            currentInput = "";
-            txtInputField.Text = Calc.Factor(num1);
-            currentInput = txtInputField.Text;
-        }
-
 
         #endregion
 
-        #region MemoryButtonsClick
+             #region HomeBrewMethods
+        /// <summary>
+        /// Method to add the argument to the end of the input box of the calculator
+        /// </summary>
+        /// <param name="s"></param>
+        public void AddCurrentInput(String s)
+        {
+            currentInput += s; //add string parameter to the String varaible currentInput
+            txtInputField.Text = currentInput; //set the text box equal to the String varaible
+        }
 
+        /// <summary>
+        /// Set the Operation variable to the String paramenter of the method. 
+        /// The try parse the current input field to the first number variable
+        /// Then set the current input back to null or Zero. 
+        /// </summary>
+        /// <param name="op"></param>
+        public void SetOperation (String op)
+        {
+            operation = op; //set operation to the passed parameter
+            Decimal.TryParse(currentInput, out num1); //parse it to a decimal and assign that decimal value to num1 
+            currentInput = ""; //reset the String variable
+        }
+
+        /// <summary>
+        /// Reset all the global variables back to null. 
+        /// Set the txtInputField text box to the paramenter passed to the method. 
+        /// </summary>
+        /// <param name="s"></param>
+        public void Clear (String s)
+        {
+            txtInputField.Text = s; //the txtbox will display the passed argument
+            num1 = 0; //set everythign else back to null or zero. 
+            num2 = 0;
+            currentInput = "";
+            operation = "";
+        }
+
+        #endregion
+         
+             #region MemoryButtonsClick
+        /// <summary>
+        /// When the MC button is clicked the memInput variable in the memoryCalculator class is set to null
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMemClear_Click(object sender, EventArgs e)
         {
             txtMemoryBox.Text = ""; //clear the text box
             mc.MemInput = ""; //set the stored value to empty
         }
 
+        /// <summary>
+        /// set the displayed textbox equal to the String value of the memInput variable in the  memoryCalculator class
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMemRecall_Click(object sender, EventArgs e)
         {
             txtInputField.Text = mc.MemInput; //use the getter and output it to the input field
             currentInput = mc.MemInput; //assign the current input to the stored memory value through the getter.
         }
 
+
+        /// <summary>
+        /// Save the current displayed value to the String value of the memInput variable in the  memoryCalculator class
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMemSave_Click(object sender, EventArgs e)
         {
             if (currentInput != "0") //as long as it isn't zero
@@ -294,7 +356,7 @@ namespace _200425671A2
             }
         }
         /// <summary>
-        /// Add the currently displayed value to the stored memory value.
+        /// Add the currently displayed value to the String value of the memInput variable in the  memoryCalculator class
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -305,7 +367,7 @@ namespace _200425671A2
             mc.MemInput = mc.Add(num1, num2); //inheritinng the Add function from Calculator and implementing it here.      
         }
         #endregion
-    }
+    }  
 }
 
 

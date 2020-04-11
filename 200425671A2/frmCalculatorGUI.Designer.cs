@@ -73,9 +73,9 @@
             this.txtMemoryBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtMemoryBox.Location = new System.Drawing.Point(17, 52);
             this.txtMemoryBox.Name = "txtMemoryBox";
+            this.txtMemoryBox.ReadOnly = true;
             this.txtMemoryBox.Size = new System.Drawing.Size(50, 41);
             this.txtMemoryBox.TabIndex = 1;
-            
             // 
             // btnBack
             // 
@@ -87,7 +87,6 @@
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
- 
             // 
             // btnClear
             // 

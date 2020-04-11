@@ -8,7 +8,6 @@ namespace _200425671A2
 {
     public class Calculator
     {
-
         /// <summary>
         ///  Creating the Addition Method
         /// </summary>
