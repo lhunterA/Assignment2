@@ -3,17 +3,22 @@ using System.Windows.Forms;
 
 namespace _200425671A2
 {
+    /// <summary>
+    /// Assignment 2 for COMP1098 of the Winter Semester. 
+    /// Created by: Lindsay Hunter
+    /// Completed: April 11, 2020
+    /// A basic memory calaculator (the simpler one)
+    /// </summary>
     public partial class frmCalculator : Form
     {
         /// <summary>
         /// The Global Variables for the form
         /// </summary>
-        String currentInput = "";
-        String operation = "";
-        String memCurrentInput = "";
+        private String currentInput = "";
+        private String operation = "";
 
-        decimal num1 = 0;
-        decimal num2 = 0;
+        private decimal num1 = 0;
+        private decimal num2 = 0;
 
         Calculator Calc = new Calculator(); //creating an instance of the Calculator class
         MemoryCalculator mc = new MemoryCalculator(); //creating an instance of the MemoryCalculator class
@@ -23,8 +28,8 @@ namespace _200425671A2
             InitializeComponent();
         }
 
-        #region NumberButtonsClick
 
+         #region NumberButtonsClick
         private void btn0_Click(object sender, EventArgs e)
         {
             currentInput += "0";
@@ -247,6 +252,7 @@ namespace _200425671A2
             Decimal.TryParse(currentInput, out num1);
             currentInput = "";
             txtInputField.Text = Calc.SquareRoot(num1);
+            currentInput = txtInputField.Text;
         }
 
         private void btnReciprocal_Click(object sender, EventArgs e)
@@ -254,48 +260,51 @@ namespace _200425671A2
             Decimal.TryParse(currentInput, out num1);
             currentInput = "";
             txtInputField.Text = Calc.Factor(num1);
+            currentInput = txtInputField.Text;
         }
 
 
         #endregion
-
 
         #region MemoryButtonsClick
 
         private void btnMemClear_Click(object sender, EventArgs e)
         {
-            txtMemoryBox.Text = "";
-            memCurrentInput = "";
-            
+            txtMemoryBox.Text = ""; //clear the text box
+            mc.MemInput = ""; //set the stored value to empty
         }
 
         private void btnMemRecall_Click(object sender, EventArgs e)
         {
-            txtInputField.Text = memCurrentInput;
-            currentInput = memCurrentInput;
+            txtInputField.Text = mc.MemInput; //use the getter and output it to the input field
+            currentInput = mc.MemInput; //assign the current input to the stored memory value through the getter.
         }
 
         private void btnMemSave_Click(object sender, EventArgs e)
         {
-            if (currentInput != "0")
+            if (currentInput != "0") //as long as it isn't zero
             {
-                txtMemoryBox.Text = "M";
-                memCurrentInput = currentInput;
-                currentInput = "";
+                txtMemoryBox.Text = "M"; //set the form label to M
+                mc.MemInput = currentInput; //assigning the current input of the form to the memInput variable in MemoryCalculator class
+                currentInput = ""; //reset the current input
             }
-            else
+            else //if it is zero
             {
-                txtInputField.Text = currentInput;
+                txtInputField.Text = currentInput; //nothing happens
             }
         }
-
+        /// <summary>
+        /// Add the currently displayed value to the stored memory value.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMemAdd_Click(object sender, EventArgs e)
         {
-
+            Decimal.TryParse(currentInput, out num1);
+            Decimal.TryParse(mc.MemInput, out num2);
+            mc.MemInput = mc.Add(num1, num2); //inheritinng the Add function from Calculator and implementing it here.      
         }
         #endregion
-
-
     }
 }
 
