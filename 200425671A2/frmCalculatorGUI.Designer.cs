@@ -66,8 +66,8 @@
             this.txtInputField.Size = new System.Drawing.Size(335, 22);
             this.txtInputField.TabIndex = 0;
             this.txtInputField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtInputField.TextChanged += new System.EventHandler(this.txtInputField_TextChanged);
             this.txtInputField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputField_KeyPress);
+            this.txtInputField.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtInputField_KeyUp);
             // 
             // txtMemoryBox
             // 
@@ -389,7 +389,6 @@
             this.Controls.Add(this.txtInputField);
             this.Name = "frmCalculator";
             this.Text = "Calculator";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmCalculator_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

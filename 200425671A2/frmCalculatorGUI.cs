@@ -153,16 +153,6 @@ namespace _200425671A2
         {
             Clear("");
         }
-
-
-        /// <summary>
-        /// When the equals button is clicked, it checks the current value of  the String variable operation
-        /// and then performs the correct basic calculation.
-        /// With divide by Zero error handling.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
         #endregion
 
         #region operationButtonsClick
@@ -224,7 +214,7 @@ namespace _200425671A2
         /// <param name="e"></param>
         private void btnReciprocal_Click(object sender, EventArgs e)
         {
-            Decimal.TryParse(currentInput, out num1);
+            Decimal.TryParse(currentInput, out num1); //output number
             currentInput = "";
             txtInputField.Text = Calc.Factor(num1);
             currentInput = txtInputField.Text;
@@ -252,20 +242,20 @@ namespace _200425671A2
                 switch (operation)
                 {
                     case "Add":
-                        txtInputField.Text = Calc.Add(num1, num2);
-                        currentInput = txtInputField.Text;
+                        txtInputField.Text = Calc.Add(num1, num2); //output result to textBox
+                        currentInput = txtInputField.Text; //allows for further operations to be performed on the results
                         break;
                     case "Subtract":
-                        txtInputField.Text = Calc.Subtract(num1, num2);
-                        currentInput = txtInputField.Text;
+                        txtInputField.Text = Calc.Subtract(num1, num2); //output result to textBox
+                        currentInput = txtInputField.Text; //allows for further operations to be performed on the results
                         break;
                     case "Multiply":
-                        txtInputField.Text = Calc.Multiply(num1, num2);
-                        currentInput = txtInputField.Text;
+                        txtInputField.Text = Calc.Multiply(num1, num2); //output result to textBox
+                        currentInput = txtInputField.Text; //allows for further operations to be performed on the results
                         break;
                     case "Divide":
-                        txtInputField.Text = Calc.Divide(num1, num2);
-                        currentInput = txtInputField.Text;
+                        txtInputField.Text = Calc.Divide(num1, num2); //output result to textBox
+                        currentInput = txtInputField.Text; //allows for further operations to be performed on the results
                         break;
                 }
             }
@@ -310,7 +300,6 @@ namespace _200425671A2
             currentInput = "";
             operation = "";
         }
-
         #endregion
 
         #region MemoryButtonsClick
@@ -366,74 +355,121 @@ namespace _200425671A2
             Decimal.TryParse(mc.MemInput, out num2);
             mc.MemInput = mc.Add(num1, num2); //inheritinng the Add function from Calculator and implementing it here.      
         }
-
         #endregion
 
 
-        #region Typability
+        #region TypableInput
         /// <summary>
         /// When the specific key is pressed we will do the same functionality as if the correlating
-        /// buttin was pressed by executing the AddCurrentInput() method.
+        /// buttin was pressed by executing the perfromClick() method. This is for number 0-9 and 
+        /// the operations of the keyboard (+, -, *, /, =).
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtInputField_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar.Equals('0') || e.KeyChar.Equals(Keys.NumPad0))
+            if (e.KeyChar.Equals('0') || e.KeyChar.Equals(Keys.NumPad0))    //Input 0
             {
                 btn0.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('1') || e.KeyChar.Equals(Keys.NumPad1))
+            else if (e.KeyChar.Equals('1') || e.KeyChar.Equals(Keys.NumPad1)) //Input 1
             {
                 btn1.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('2') || e.KeyChar.Equals(Keys.NumPad2))
+            else if (e.KeyChar.Equals('2') || e.KeyChar.Equals(Keys.NumPad2)) //Input 2
             {
                 btn2.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('3') || e.KeyChar.Equals(Keys.NumPad3))
+            else if (e.KeyChar.Equals('3') || e.KeyChar.Equals(Keys.NumPad3)) //Input 3
             {
                 btn3.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('4') || e.KeyChar.Equals(Keys.NumPad4))
+            else if (e.KeyChar.Equals('4') || e.KeyChar.Equals(Keys.NumPad4))    //Input 4
             {
                 btn4.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('5') || e.KeyChar.Equals(Keys.NumPad5))
+            else if (e.KeyChar.Equals('5') || e.KeyChar.Equals(Keys.NumPad5))    //Input 5
             {
                 btn5.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('6') || e.KeyChar.Equals(Keys.NumPad6))
+            else if (e.KeyChar.Equals('6') || e.KeyChar.Equals(Keys.NumPad6))    //Input 6
             {
                 btn6.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('7') || e.KeyChar.Equals(Keys.NumPad7))
+            else if (e.KeyChar.Equals('7') || e.KeyChar.Equals(Keys.NumPad7))    //Input 7
             {
                 btn7.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('8') || e.KeyChar.Equals(Keys.NumPad8))
+            else if (e.KeyChar.Equals('8') || e.KeyChar.Equals(Keys.NumPad8))    //Input 8
             {
                 btn8.PerformClick();
                 e.Handled = true;
             }
-            else if (e.KeyChar.Equals('9') || e.KeyChar.Equals(Keys.NumPad9))
+            else if (e.KeyChar.Equals('9') || e.KeyChar.Equals(Keys.NumPad9))    //Input 9
             {
                 btn9.PerformClick();
                 e.Handled = true;
             }
+            else if (e.KeyChar.Equals('-'))    //Input -
+            {
+                btnMinus.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('+'))    //Input +
+            {
+                btnAdd.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('/'))    //Input /
+            {
+                btnDivide.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('*'))    //Input *
+            {
+                btnMultiply.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('='))    //Input =
+            {
+                btnEquals.PerformClick();
+                e.Handled = true;
+            }
         }
+
+        /// <summary>
+        /// if the Escape or Backspace Key is pressed then act as if the clear and back button
+        /// on the calculator were pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtInputField_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Back)     //Input <- key
+            {
+                btnBack.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Escape)     //Input ESC key
+            {
+                btnClear.PerformClick();
+                e.Handled = true;
+            }
+        }
+        #endregion
+
 
     }
 
- } 
+} 
 
 
 
