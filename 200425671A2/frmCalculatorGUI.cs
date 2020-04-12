@@ -6,7 +6,7 @@ namespace _200425671A2
     /// <summary>
     /// Assignment 2 for COMP1098 of the Winter Semester. 
     /// Created by: Lindsay Hunter
-    /// Completed: April 11, 2020
+    /// Completed: April 12, 2020
     /// A basic memory calaculator (the simpler one)
     /// </summary>
     public partial class frmCalculator : Form
@@ -29,7 +29,6 @@ namespace _200425671A2
         }
 
         #region NumberButtonsClick
-
         /// <summary>
         /// Using the AddCurrentInput method for all numeric valued buttons
         /// </summary>
@@ -132,7 +131,7 @@ namespace _200425671A2
         }
 
         /// <summary>
-        /// Remove the last added digit from the number
+        /// Remove the last added digit from the number by using the Remove method 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -199,10 +198,10 @@ namespace _200425671A2
         /// <param name="e"></param>
         private void btnSQRT_Click(object sender, EventArgs e)
         {
-            Decimal.TryParse(currentInput, out num1);
+            Decimal.TryParse(currentInput, out num1); //output textfield as a decimal value to variable num1
             currentInput = "";
-            txtInputField.Text = Calc.SquareRoot(num1);
-            currentInput = txtInputField.Text;
+            txtInputField.Text = Calc.SquareRoot(num1); //use the Refactor method and output to the user
+            currentInput = txtInputField.Text; //set the output to the current textbox value for further mathematical operations
         }
 
         /// <summary>
@@ -214,10 +213,10 @@ namespace _200425671A2
         /// <param name="e"></param>
         private void btnReciprocal_Click(object sender, EventArgs e)
         {
-            Decimal.TryParse(currentInput, out num1); //output number
+            Decimal.TryParse(currentInput, out num1); //output textfield as a decimal value to variable num1
             currentInput = "";
-            txtInputField.Text = Calc.Factor(num1);
-            currentInput = txtInputField.Text;
+            txtInputField.Text = Calc.Factor(num1); //use the Refactor method and output to the user
+            currentInput = txtInputField.Text; //set the output to the current textbox value for further mathematical operations
         }
 
 

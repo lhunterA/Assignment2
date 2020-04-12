@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace _200425671A2
 {
+    /// <summary>
+    /// Assignment 2 for COMP1098 of the Winter Semester. 
+    /// Created by: Lindsay Hunter
+    /// Completed: April 12, 2020
+    /// A basic memory calaculator (the simpler one)
+    /// Calculator class that extends the calculator class 
+    /// </summary>
     public class Calculator
     {
         /// <summary>
