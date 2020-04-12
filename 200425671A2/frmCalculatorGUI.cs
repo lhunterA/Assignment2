@@ -28,7 +28,7 @@ namespace _200425671A2
             InitializeComponent();
         }
 
-             #region NumberButtonsClick
+        #region NumberButtonsClick
 
         /// <summary>
         /// Using the AddCurrentInput method for all numeric valued buttons
@@ -86,7 +86,7 @@ namespace _200425671A2
         }
         #endregion
 
-             #region OtherButtonsClick
+        #region OtherButtonsClick
         /// <summary>
         /// Adding a decimal to a number with some error handling: 
         /// if there is already a decimal in the number don't add another one.
@@ -97,7 +97,7 @@ namespace _200425671A2
         {
             if (currentInput.IndexOf(".") == -1) //if there is not already a decimal in the number
             {
-                AddCurrentInput('.'); 
+                AddCurrentInput('.');
             }
             else
             {
@@ -165,7 +165,7 @@ namespace _200425671A2
 
         #endregion
 
-             #region operationButtonsClick
+        #region operationButtonsClick
 
         /// <summary>
         /// Using the SetOperation() method and passing it the parameter Divide
@@ -273,7 +273,7 @@ namespace _200425671A2
 
         #endregion
 
-             #region HomeBrewMethods
+        #region HomeBrewMethods
         /// <summary>
         /// Method to add the argument to the end of the input box of the calculator
         /// </summary>
@@ -290,7 +290,7 @@ namespace _200425671A2
         /// Then set the current input back to null or Zero. 
         /// </summary>
         /// <param name="op"></param>
-        public void SetOperation (String op)
+        public void SetOperation(String op)
         {
             operation = op; //set operation to the passed parameter
             Decimal.TryParse(currentInput, out num1); //parse it to a decimal and assign that decimal value to num1 
@@ -302,7 +302,7 @@ namespace _200425671A2
         /// Set the txtInputField text box to the paramenter passed to the method. 
         /// </summary>
         /// <param name="s"></param>
-        public void Clear (String s)
+        public void Clear(String s)
         {
             txtInputField.Text = s; //the txtbox will display the passed argument
             num1 = 0; //set everythign else back to null or zero. 
@@ -312,8 +312,8 @@ namespace _200425671A2
         }
 
         #endregion
-         
-             #region MemoryButtonsClick
+
+        #region MemoryButtonsClick
         /// <summary>
         /// When the MC button is clicked the memInput variable in the memoryCalculator class is set to null
         /// </summary>
@@ -369,52 +369,71 @@ namespace _200425671A2
 
         #endregion
 
+
+        #region Typability
         /// <summary>
         /// When the specific key is pressed we will do the same functionality as if the correlating
         /// buttin was pressed by executing the AddCurrentInput() method.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmCalculator_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtInputField_KeyPress(object sender, KeyPressEventArgs e)
         {
-            switch (e.KeyChar.ToString())
+            if (e.KeyChar.Equals('0') || e.KeyChar.Equals(Keys.NumPad0))
             {
-                case "0":
-                    btn0.PerformClick();
-                    break;
-                case "1":
-                    AddCurrentInput('1');
-                    break;
-                case "2":
-                    AddCurrentInput('2');
-                    break;
-                case "3":
-                    AddCurrentInput('3');
-                    break;
-                case "4":
-                    AddCurrentInput('4');
-                    break;
-                case "5":
-                    AddCurrentInput('5');
-                    break;
-                case "6":
-                    AddCurrentInput('6');
-                    break;
-                case "7":
-                    AddCurrentInput('7');
-                    break;
-                case "8":
-                    AddCurrentInput('8');
-                    break;
-                case "9":
-                    AddCurrentInput('9');
-                    break;
-                
+                btn0.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('1') || e.KeyChar.Equals(Keys.NumPad1))
+            {
+                btn1.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('2') || e.KeyChar.Equals(Keys.NumPad2))
+            {
+                btn2.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('3') || e.KeyChar.Equals(Keys.NumPad3))
+            {
+                btn3.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('4') || e.KeyChar.Equals(Keys.NumPad4))
+            {
+                btn4.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('5') || e.KeyChar.Equals(Keys.NumPad5))
+            {
+                btn5.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('6') || e.KeyChar.Equals(Keys.NumPad6))
+            {
+                btn6.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('7') || e.KeyChar.Equals(Keys.NumPad7))
+            {
+                btn7.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('8') || e.KeyChar.Equals(Keys.NumPad8))
+            {
+                btn8.PerformClick();
+                e.Handled = true;
+            }
+            else if (e.KeyChar.Equals('9') || e.KeyChar.Equals(Keys.NumPad9))
+            {
+                btn9.PerformClick();
+                e.Handled = true;
             }
         }
 
-    }  
-}
+    }
+
+ } 
 
 
 
